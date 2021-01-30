@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\JwtAuthController;
 use App\Http\Controllers\StikerController;
 
 /*
@@ -15,13 +16,14 @@ use App\Http\Controllers\StikerController;
 |
 */
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
-Route::prefix("auth")->group(function () {
-    Route::get("/init", "App\\Http\\Controllers\\AuthController@init");
-    Route::post("/login", "App\\Http\\Controllers\\AuthController@login");
-    Route::post("/register", "App\\Http\\Controllers\\AuthController@register");
+Route::group([
+    'middleware' => 'api',
+    'prefix' => 'auth'
+], function ($router) {
+    Route::post('/register', [JwtAuthController::class, 'register']);
+    Route::post('/login', [JwtAuthController::class, 'login']);
+    Route::get('/user', [JwtAuthController::class, 'user']);
+    Route::post('/token-refresh', [JwtAuthController::class, 'refresh']);
+    Route::post('/logout', [JwtAuthController::class, 'signout']);
 });
-
 Route::apiResource('stikers', StikerController::class);

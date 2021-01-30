@@ -38,6 +38,7 @@
 
 <script>
 import Input from "../../components/Auth/Input";
+import { mapActions } from 'vuex'
 export default {
     name: "Login",
     components: {Input},
@@ -50,6 +51,7 @@ export default {
         }
     },
     methods: {
+        ...mapActions(["LOGIN_USER"]),
         async onSubmit() {
             this.error = {};
             if (!this.username.trim()) this.error.username = "Username is required";
@@ -60,8 +62,7 @@ export default {
                 password: this.password
             }
             try {
-                const response = await axios.post("/auth/login", data);
-                this.$emit("onUserChanged", response.data.user);
+                this.LOGIN_USER(data)
             } catch (e) {
                 this.generalError = e.response.data.error;
             }

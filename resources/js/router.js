@@ -15,7 +15,7 @@ const routes = [
     {
         path: '/',
         name: 'Home',
-        meta: { layout: 'Main', auth: false },
+        meta: { layout: 'Main', auth: undefined },
         component: Home
     },
 
@@ -29,12 +29,12 @@ const routes = [
     {
         path: '/stikers',
         name: 'Stikers',
-        meta: { layout: 'Main', auth: false },
+        meta: { layout: 'Main', auth: undefined },
         component: StikerIndexView
     },   {
         path: '/stikers/:id',
         name: 'StikerShow',
-        meta: { layout: 'Main', auth: false },
+        meta: { layout: 'Main', auth: undefined },
         component: ShowStikerView
     },
     {
@@ -58,7 +58,7 @@ const routes = [
     {
         path: '/categories',
         name: 'Categories',
-        meta: { layout: 'Main', auth: false },
+        meta: { layout: 'Main', auth: undefined },
         component: CategoryIndexView
     },
     {
@@ -76,7 +76,7 @@ const routes = [
     {
         path: '/categories/:id',
         name: 'ShowCategory',
-        meta: { layout: 'Main', auth: false },
+        meta: { layout: 'Main', auth: undefined },
         component: ShowCategoryView
     },
 

@@ -16615,11 +16615,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_Auth_Input__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/Auth/Input */ "./resources/js/components/Auth/Input.vue");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.mjs");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -16635,12 +16643,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       generalError: ""
     };
   },
-  methods: {
+  methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapActions)(["LOGIN_USER"])), {}, {
     onSubmit: function onSubmit() {
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-        var data, response;
+        var data;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -16661,32 +16669,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   username: _this.username,
                   password: _this.password
                 };
-                _context.prev = 6;
-                _context.next = 9;
-                return axios.post("/auth/login", data);
 
-              case 9:
-                response = _context.sent;
+                try {
+                  _this.LOGIN_USER(data);
+                } catch (e) {
+                  _this.generalError = e.response.data.error;
+                }
 
-                _this.$emit("onUserChanged", response.data.user);
-
-                _context.next = 16;
-                break;
-
-              case 13:
-                _context.prev = 13;
-                _context.t0 = _context["catch"](6);
-                _this.generalError = _context.t0.response.data.error;
-
-              case 16:
+              case 7:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[6, 13]]);
+        }, _callee);
       }))();
     }
-  }
+  })
 });
 
 /***/ }),
@@ -17595,13 +17593,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
 /* harmony import */ var _views_Home__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./views/Home */ "./resources/js/views/Home.vue");
 /* harmony import */ var _views_Stikers_Index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./views/Stikers/Index */ "./resources/js/views/Stikers/Index.vue");
 /* harmony import */ var _views_Admin_Stikers_Create_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./views/Admin/Stikers/Create.vue */ "./resources/js/views/Admin/Stikers/Create.vue");
-/* harmony import */ var _views_Stikers_Show_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./views/Stikers/Show.vue */ "./resources/js/views/Stikers/Show.vue");
-/* harmony import */ var _views_Auth_Login_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./views/Auth/Login.vue */ "./resources/js/views/Auth/Login.vue");
-/* harmony import */ var _views_Auth_Register_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./views/Auth/Register.vue */ "./resources/js/views/Auth/Register.vue");
+/* harmony import */ var _views_Admin_Stikers_Edit_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./views/Admin/Stikers/Edit.vue */ "./resources/js/views/Admin/Stikers/Edit.vue");
+/* harmony import */ var _views_Stikers_Show_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./views/Stikers/Show.vue */ "./resources/js/views/Stikers/Show.vue");
+/* harmony import */ var _views_Auth_Login_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./views/Auth/Login.vue */ "./resources/js/views/Auth/Login.vue");
+/* harmony import */ var _views_Auth_Register_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./views/Auth/Register.vue */ "./resources/js/views/Auth/Register.vue");
+/* harmony import */ var _views_Categories_Show_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./views/Categories/Show.vue */ "./resources/js/views/Categories/Show.vue");
+/* harmony import */ var _views_Categories_Index_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./views/Categories/Index.vue */ "./resources/js/views/Categories/Index.vue");
+/* harmony import */ var _views_Admin_Categories_Edit_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./views/Admin/Categories/Edit.vue */ "./resources/js/views/Admin/Categories/Edit.vue");
+/* harmony import */ var _views_Admin_Categories_Create_vue__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./views/Admin/Categories/Create.vue */ "./resources/js/views/Admin/Categories/Create.vue");
+
+
+
+
+
 
 
 
@@ -17614,7 +17622,7 @@ var routes = [{
   name: 'Home',
   meta: {
     layout: 'Main',
-    auth: false
+    auth: undefined
   },
   component: _views_Home__WEBPACK_IMPORTED_MODULE_0__.default
 }, {
@@ -17630,7 +17638,7 @@ var routes = [{
   name: 'Stikers',
   meta: {
     layout: 'Main',
-    auth: false
+    auth: undefined
   },
   component: _views_Stikers_Index__WEBPACK_IMPORTED_MODULE_1__.default
 }, {
@@ -17638,9 +17646,17 @@ var routes = [{
   name: 'StikerShow',
   meta: {
     layout: 'Main',
-    auth: false
+    auth: undefined
   },
-  component: _views_Stikers_Show_vue__WEBPACK_IMPORTED_MODULE_3__.default
+  component: _views_Stikers_Show_vue__WEBPACK_IMPORTED_MODULE_4__.default
+}, {
+  path: '/categories/:id/edit',
+  name: 'EditStiker',
+  meta: {
+    layout: 'Main',
+    auth: true
+  },
+  component: _views_Admin_Stikers_Edit_vue__WEBPACK_IMPORTED_MODULE_3__.default
 }, {
   path: '/auth/login',
   name: 'Login',
@@ -17648,7 +17664,7 @@ var routes = [{
     layout: 'Main',
     auth: false
   },
-  component: _views_Auth_Login_vue__WEBPACK_IMPORTED_MODULE_4__.default
+  component: _views_Auth_Login_vue__WEBPACK_IMPORTED_MODULE_5__.default
 }, {
   path: '/auth/register',
   name: 'Register',
@@ -17656,10 +17672,42 @@ var routes = [{
     layout: 'Main',
     auth: false
   },
-  component: _views_Auth_Register_vue__WEBPACK_IMPORTED_MODULE_5__.default
+  component: _views_Auth_Register_vue__WEBPACK_IMPORTED_MODULE_6__.default
+}, {
+  path: '/categories',
+  name: 'Categories',
+  meta: {
+    layout: 'Main',
+    auth: undefined
+  },
+  component: _views_Categories_Index_vue__WEBPACK_IMPORTED_MODULE_8__.default
+}, {
+  path: '/categories/create',
+  name: 'CategoryCreate',
+  meta: {
+    layout: 'Main',
+    auth: true
+  },
+  component: _views_Admin_Categories_Create_vue__WEBPACK_IMPORTED_MODULE_10__.default
+}, {
+  path: '/categories/:id/edit',
+  name: 'CategoryEdit',
+  meta: {
+    layout: 'Main',
+    auth: true
+  },
+  component: _views_Admin_Categories_Edit_vue__WEBPACK_IMPORTED_MODULE_9__.default
+}, {
+  path: '/categories/:id',
+  name: 'ShowCategory',
+  meta: {
+    layout: 'Main',
+    auth: undefined
+  },
+  component: _views_Categories_Show_vue__WEBPACK_IMPORTED_MODULE_7__.default
 }];
-var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_6__.createRouter)({
-  history: (0,vue_router__WEBPACK_IMPORTED_MODULE_6__.createWebHistory)(),
+var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_11__.createRouter)({
+  history: (0,vue_router__WEBPACK_IMPORTED_MODULE_11__.createWebHistory)(),
   routes: routes
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (router);
@@ -17677,11 +17725,73 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  state: {},
-  mutations: {},
-  actions: {},
-  getters: {}
+  state: {
+    loading: false,
+    dropdown: false
+  },
+  mutations: {
+    SET_LOADING: function SET_LOADING(state) {
+      state.loading = !state.loading;
+    },
+    SET_DROPDOWN: function SET_DROPDOWN(state) {
+      state.dropdown = !state.dropdown;
+    }
+  },
+  actions: {
+    LOADING: function LOADING(_ref) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var commit;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                commit = _ref.commit;
+                commit("SET_LOADING");
+
+              case 2:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    },
+    DROPDOWN: function DROPDOWN(_ref2) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+        var commit;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                commit = _ref2.commit;
+                commit("SET_DROPDOWN");
+
+              case 2:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
+    }
+  },
+  getters: {
+    GET_LOADING: function GET_LOADING(state) {
+      return state.loading;
+    },
+    GET_DROPDOWN: function GET_DROPDOWN(state) {
+      return state.dropdown;
+    }
+  }
 });
 
 /***/ }),
@@ -17716,11 +17826,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   state: {
-    user: null
+    user: null,
+    token: localStorage.getItem('auth') || ''
   },
   mutations: {
     SET_NEW_USER: function SET_NEW_USER(state, user) {
       state.user = user;
+    },
+    SET_TOKEN: function SET_TOKEN(state, token) {
+      localStorage.setItem('auth', token);
+      state.token = token;
+      console.log('ok');
+    },
+    CLEAR_TOKEN: function CLEAR_TOKEN(state) {
+      localStorage.removeItem('auth');
+      state.token = '';
     }
   },
   actions: {
@@ -17746,6 +17866,30 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee);
       }))();
+    },
+    LOGIN_USER: function LOGIN_USER(_ref2, data) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+        var commit;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                commit = _ref2.commit;
+                _context2.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().post('/api/auth/login', data).then(function (res) {
+                  commit("SET_TOKEN", res.data.access_token);
+                  commit("SET_NEW_USER", res.data.user);
+                })["catch"](function (e) {
+                  consple.log(e);
+                });
+
+              case 3:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
     }
   },
   getters: {
@@ -17768,11 +17912,105 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  state: {},
-  mutations: {},
-  actions: {},
-  getters: {}
+  state: {
+    category: null
+  },
+  mutations: {
+    SET_CATEGORY_STIKERS: function SET_CATEGORY_STIKERS(state, payload) {
+      state.stikers = payload.stikers;
+      state.category = payload.category;
+    }
+  },
+  actions: {
+    LOAD_CATEGORY_STIKERS: function LOAD_CATEGORY_STIKERS(_ref, category_id) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var commit;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                commit = _ref.commit;
+                axios__WEBPACK_IMPORTED_MODULE_1___default().get('/api/categories/' + category_id).then(function (res) {
+                  commit("SET_CATEGORY_STIKERS", res.data);
+                })["catch"](function (e) {
+                  console.log(e);
+                });
+
+              case 2:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    },
+    CREATE_CATEGORY: function CREATE_CATEGORY(_ref2, data) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+        var commit;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                commit = _ref2.commit;
+                axios__WEBPACK_IMPORTED_MODULE_1___default().post('/api/categories/create', data).then(function (res) {
+                  console.log(res.data);
+                });
+
+              case 2:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
+    },
+    EDIT_CATEGORY: function EDIT_CATEGORY(_ref3, data) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+        var commit;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                commit = _ref3.commit;
+                axios__WEBPACK_IMPORTED_MODULE_1___default().put('/api/categories/' + data.id + '/edit', data).then(function (res) {
+                  console.log(res.data);
+                });
+
+              case 2:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
+      }))();
+    }
+  },
+  getters: {
+    CATEGORY_STIKERS: function CATEGORY_STIKERS(state) {
+      return _objectSpread({}, state.stikers);
+    },
+    CATEGORY_NAME: function CATEGORY_NAME(state) {
+      state.category.title;
+    }
+  }
 });
 
 /***/ }),
@@ -17789,7 +18027,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  state: {},
+  state: {
+    errors: {
+      form: {
+        username: '',
+        password: '',
+        name: ''
+      }
+    }
+  },
   mutations: {},
   actions: {},
   getters: {}
@@ -17875,6 +18121,26 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             }
           }
         }, _callee2);
+      }))();
+    },
+    EDIT_STIKER: function EDIT_STIKER(_ref2, data) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+        var commit;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                commit = _ref2.commit;
+                axios.put('/api/stikers/' + data.id + '/edit', data).then(function (res) {
+                  console.log(res.data);
+                });
+
+              case 2:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
       }))();
     }
   },
@@ -54205,6 +54471,42 @@ _MainLayout_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__f
 
 /***/ }),
 
+/***/ "./resources/js/views/Admin/Categories/Create.vue":
+/*!********************************************************!*\
+  !*** ./resources/js/views/Admin/Categories/Create.vue ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+const script = {}
+script.__file = "resources/js/views/Admin/Categories/Create.vue"
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (script);
+
+/***/ }),
+
+/***/ "./resources/js/views/Admin/Categories/Edit.vue":
+/*!******************************************************!*\
+  !*** ./resources/js/views/Admin/Categories/Edit.vue ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+const script = {}
+script.__file = "resources/js/views/Admin/Categories/Edit.vue"
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (script);
+
+/***/ }),
+
 /***/ "./resources/js/views/Admin/Stikers/Create.vue":
 /*!*****************************************************!*\
   !*** ./resources/js/views/Admin/Stikers/Create.vue ***!
@@ -54228,6 +54530,24 @@ if (false) {}
 _Create_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/views/Admin/Stikers/Create.vue"
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_Create_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
+
+/***/ }),
+
+/***/ "./resources/js/views/Admin/Stikers/Edit.vue":
+/*!***************************************************!*\
+  !*** ./resources/js/views/Admin/Stikers/Edit.vue ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+const script = {}
+script.__file = "resources/js/views/Admin/Stikers/Edit.vue"
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (script);
 
 /***/ }),
 
@@ -54281,6 +54601,42 @@ if (false) {}
 _Register_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/views/Auth/Register.vue"
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_Register_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
+
+/***/ }),
+
+/***/ "./resources/js/views/Categories/Index.vue":
+/*!*************************************************!*\
+  !*** ./resources/js/views/Categories/Index.vue ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+const script = {}
+script.__file = "resources/js/views/Categories/Index.vue"
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (script);
+
+/***/ }),
+
+/***/ "./resources/js/views/Categories/Show.vue":
+/*!************************************************!*\
+  !*** ./resources/js/views/Categories/Show.vue ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+const script = {}
+script.__file = "resources/js/views/Categories/Show.vue"
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (script);
 
 /***/ }),
 
